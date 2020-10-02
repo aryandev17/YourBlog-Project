@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+        <nav class="navbar">
+            <div class="logo-container">
+                <h1 class="lg-heading l-spacing-lg">YourBlog</h1>
+                </div>
+
+                <div class="social-icons">
+                    <i class="fab fa-facebook-f fa-2x icon"></i>
+                    <i class="fab fa-twitter fa-2x icon"></i>
+                    <i class="fab fa-instagram fa-2x icon"></i>
+                </div>
+
+                <ul class="nav-items">
+                    <li class="item"><a href="/">Home</a></li>
+                    <li class="item"><a href="/about/">About</a></li>
+                    <li class="item"><a href="/contact/">Contact Us</a></li>
+                </ul>
+        </nav>
+
+        <div class="header-img">
+            <img src="{% static 'img/your-blog-header.jpg' %}" alt="yourBlog Header Image">
+        </div>
+
+        </div>
+    </header>
+
+    <script src="https://kit.fontawesome.com/84e89d6982.js" crossorigin="anonymous"></script>
+</body>
+</html>
