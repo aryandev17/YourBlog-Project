@@ -1,3 +1,30 @@
 {% extends 'base.html' %}
 
 {% block title %} About - YourBlog {% endblock title %}
+
+{% block aboutactive %} active {% endblock aboutactive %}
+
+{% load static %}
+
+{% block body %}
+<div class="container">
+    <div class="about-container flex-center">
+        <div class="about-img">
+            <img src="{% static 'home/img/your-blog-header.jpg' %}" alt="">
+        </div>
+        <div class="about-content-div">
+            <div class="about-content flex-column-no-center">
+                <h1 class="md-heading about-heading">About YourBlog</h1>
+                <div class="about-para">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem aspernatur odit doloribus
+                        mollitia sit dignissimos ea maiores repellendus soluta laudantium modi provident nam fuga harum
+                        quae enim, minima libero autem illum expedita dicta accusantium! Atque minima eius, ad similique
+                        inventore repellendus ducimus, voluptas cupiditate rem, eum repellat nesciunt. Illum, minus!</p>
+                    <p class="about-contact-heading">CONTACT</p>
+                    <p class="botton-para">info@yourblog.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}
