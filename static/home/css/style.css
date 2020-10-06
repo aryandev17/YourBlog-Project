@@ -25,6 +25,10 @@ a{
 
 /* #################### UTILITY CLASSES ################### */
 
+.active-cat{
+    color: gold;
+}
+
 .container{
     max-width: 1100px;
     width: 65%;
@@ -352,8 +356,8 @@ footer{
     height: 80vh;
 }
 
-.about-heading{
-    
+.upper-about{
+    text-transform: uppercase;
 }
 
 .about-img{
@@ -395,5 +399,97 @@ footer{
     margin-bottom: 0;
 }
 
+/* ################## STYLING BLOG HOME PAGE ################ */
 
+.blog-container{
+    font-family: playfairdisplay-bold, "playfair display", serif;
+}
+
+.all-posts-heading{
+    margin-top: 30px;
+}
+
+.blog-post-div{
+    border: 1px solid grey;
+    height: 300px;
+    margin: 50px 0;
+}
+
+.blog-post-div:hover h2{
+    color: goldenrod;
+}
+
+.blog-content-div {
+    width: 50%;
+    padding: 30px;
+    height: 100%;
+}
+
+.blog-img-div{
+    width: 50%;
+    height: 100%;
+}
+
+.blog-img-div img{
+    width: 100%;
+    height: 100%;
+}
+
+.blog-author-img img{
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    margin-right: 8px;
+}
+
+.blog-author-text{
+    font-size: 12px;
+}
+
+.blog-content h2{
+    margin: 10px 0;
+}
+
+.blog-content h2:hover{
+    color: goldenrod;
+}
+
+.blog-content p{
+    font-size: 16px;
+}
+
+.hr-bottom{
+    border-bottom: 1px solid black;
+    width: 100%;
+    height: 20px;
+}
+
+.views-comment{
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.views-comment p{
+    font-size: 14px;
+}
+
+.views-comment a{
+    color: black;
+}
+
+/* ################ STYLING CATEGORY NAVBAR ################ */
+
+.category-item-div{
+    margin-top: 10px;
+}
+
+.category-item-div a{
+    color: black;
+    padding: 0 10px;
+    font-size: 16px;
+}
+
+.category-item-div a:hover{
+    color: goldenrod;
+}
 

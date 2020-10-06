@@ -1,5 +1,97 @@
 {% extends 'base.html' %}
 
-{% block title %} Contact Us - YourBlog{% endblock title %}
+{% block title %} All Blogs - YourBlog{% endblock title %}
 
 {% block blogactive %} active {% endblock blogactive %}
+
+{% load static %}
+
+{% block body %}
+<div class="container nth-child">
+    <div class="blog-container">
+        <div class="all-posts-heading flex-center lg-heading">
+            All Posts
+        </div>
+
+        <div class="category-navbar">
+            <ul class="category-item-div flex">
+                <li class="category-item"><a href="#" class="active-cat">All</a></li>
+                <li class="category-item"><a href="#" class="">Food</a></li>
+                <li class="category-item"><a href="#" class="">Travel</a></li>
+                <li class="category-item"><a href="#" class="">Cars</a></li>
+            </ul>
+        </div>
+
+        {% for post in posts %}
+        <div class="blog-post-div flex-center" style="margin-top: 25px;">
+            <div class="blog-img-div">
+                <a href="/blog/slug"><img src="{% static 'home/img/your-blog-header1.jpg' %}" alt="Blog Post Image"></a>
+            </div>
+
+            <div class="blog-content-div flex-column-no-center">
+                <div class="blog-author-div flex">
+                    <div class="blog-author-img">
+                        <img src="{% static 'home/img/your-blog-header1.jpg' %}" alt="Author's Image">
+                    </div>
+
+                    <div class="blog-author-text">
+                        <p>{{post.author}}</p>
+                        <p>Apr 15 - 3 Min</p>
+                    </div>
+                </div>
+
+                <div class="blog-content">
+                    <a href="/blog/{{post.slug}}" style="color: black;"><h2 class="md-heading">{{post.title}}</h2></a>
+                    <p>{{post.content}}</p>
+
+                    <div class="hr-bottom">
+
+                    </div>
+
+                    <div class="views-comment flex">
+                    <p>4356 Views</p>
+                    <p><a href="/blog">Write a comment</a></p>
+                </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+
+        <div class="blog-post-div flex-center">
+            <div style="order: 2;" class="blog-img-div">
+                <img src="{% static 'home/img/your-blog-header.jpg' %}" alt="Blog Post Image">
+            </div>
+
+            <div style="order: 1;" class="blog-content-div flex-column-no-center">
+                <div class="blog-author-div flex">
+                    <div class="blog-author-img">
+                        <img src="{% static 'home/img/your-blog-header1.jpg' %}" alt="Author's Image">
+                    </div>
+
+                    <div class="blog-author-text">
+                        <p>Admin</p>
+                        <p>Apr 15 - 3 Min</p>
+                    </div>
+                </div>
+
+                <div class="blog-content">
+                    <h2 class="md-heading">This is a Fake Post Title.</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores voluptatum facere voluptatibus voluptates ullam aliquid, sint iure repellendus. Magni, iste.</p>
+
+                    <div class="hr-bottom">
+
+                    </div>
+
+                    <div class="views-comment flex">
+                    <p>4356 Views</p>
+                    <p><a href="/blog">Write a comment</a></p>
+                </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+{% endblock body %}

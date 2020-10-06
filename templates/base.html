@@ -57,6 +57,7 @@
                 <h1 class="lg-heading">Liked Posts? Want to say something? - Say Here !! </h1>
             </div>
             <div class="contact-input-fields flex-column">
+                <form action="{{request.path}}" method="POST"> {% csrf_token %}
                 <div class="name-email-field flex">
                     <input type="text" name="name" id="name" placeholder="Name">
 
@@ -71,6 +72,7 @@
                 <div class="button-container">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
+            </form>
             </div>
         </div>
     </section>
