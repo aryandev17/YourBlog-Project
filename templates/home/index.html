@@ -14,14 +14,15 @@
         </div>
 
         <div class="f-posts-container flex-wrap-nocenter">
-          
+
+            {% for post in posts %}
             <div class="category-fix">
                 <div class="category-div">
-                    <h2 class="sm-heading">Category</h2>
+                    <h2 class="sm-heading">{{post.category|title}}</h2>
                 </div>
             <div class="post-container flex-column">
                 <div class="post-img">
-                    <img src="{% static 'home/img/your-blog-header.jpg' %}" alt="Blog Post {{post.serial_no}}">
+                    <img src="/media/{{post.thumbnail_image}}" alt="Blog Post {{post.serial_no}}">
                 </div>
 
                 <div class="post-content">
@@ -31,153 +32,26 @@
                         </div>
 
                         <div class="author-details">
-                            <p>Admin</p>
+                            <p>{{post.author}}</p>
                             <p class="font-300">Apr 15 - 346 Views</p>
                         </div>
                     </div>
 
                     <div class="post-texts">
-                        <h2 class="sm-heading">Here Comes the Post Title</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias quas
-                            recusandae, ex provident quidem cupiditate reprehenderit maiores adipisci culpa dolor!</p>
-                    </div>
-                    <br>
-                    <hr>
-                </div>
-            </div>
-        </div>
-
-            <div class="category-fix">
-                <div class="category-div">
-                    <h2 class="sm-heading">Category</h2>
-                </div>
-            <div class="post-container flex-column">
-                <div class="post-img">
-                    <img src="{% static 'home/img/your-blog-header.jpg' %}" alt="Blog Post {{post.serial_no}}">
-                </div>
-
-                <div class="post-content">
-                    <div class="author-div flex">
-                        <div class="author-img flex-center">
-                            <img src="{% static 'home/img/your-blog-header.jpg' %}" alt="{{post.author}}'s Image">
-                        </div>
-
-                        <div class="author-details">
-                            <p>Admin</p>
-                            <p class="font-300">Apr 15 - 346 Views</p>
-                        </div>
-                    </div>
-
-                    <div class="post-texts">
-                        <h2 class="sm-heading">Here Comes the Post Title</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias quas
-                            recusandae, ex provident quidem cupiditate reprehenderit maiores adipisci culpa dolor!</p>
+                        <h2 class="sm-heading">{{post.title}}</h2>
+                        <p style="min-height: 57px;">{{post.content}}</p>
                     </div>
                     <br>
                     <hr>
                 </div>
                 </div>
             </div>
+            {% endfor %}
 
-            <div class="category-fix">
-                <div class="category-div">
-                    <h2 class="sm-heading">Category</h2>
-                </div>
-            <div class="post-container flex-column">
-                <div class="post-img">
-                    <img src="{% static 'home/img/your-blog-header.jpg' %}" alt="Blog Post {{post.serial_no}}">
-                </div>
-
-                <div class="post-content">
-                    <div class="author-div flex">
-                        <div class="author-img flex-center">
-                            <img src="{% static 'home/img/your-blog-header.jpg' %}" alt="{{post.author}}'s Image">
-                        </div>
-
-                        <div class="author-details">
-                            <p>Admin</p>
-                            <p class="font-300">Apr 15 - 346 Views</p>
-                        </div>
-                    </div>
-
-                    <div class="post-texts">
-                        <h2 class="sm-heading">Here Comes the Post Title</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias quas
-                            recusandae, ex provident quidem cupiditate reprehenderit maiores adipisci culpa dolor!</p>
-                    </div>
-                    <br>
-                    <hr>
-                </div>
-                </div>
-            </div>
-
-            <div class="category-fix">
-                <div class="category-div">
-                    <h2 class="sm-heading">Category</h2>
-                </div>
-            <div class="post-container flex-column">
-                <div class="post-img">
-                    <img src="{% static 'home/img/your-blog-header.jpg' %}" alt="Blog Post {{post.serial_no}}">
-                </div>
-
-                <div class="post-content">
-                    <div class="author-div flex">
-                        <div class="author-img flex-center">
-                            <img src="{% static 'home/img/your-blog-header.jpg' %}" alt="{{post.author}}'s Image">
-                        </div>
-
-                        <div class="author-details">
-                            <p>Admin</p>
-                            <p class="font-300">Apr 15 - 346 Views</p>
-                        </div>
-                    </div>
-
-                    <div class="post-texts">
-                        <h2 class="sm-heading">Here Comes the Post Title</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias quas
-                            recusandae, ex provident quidem cupiditate reprehenderit maiores adipisci culpa dolor!</p>
-                    </div>
-                    <br>
-                    <hr>
-                </div>
-                </div>
-            </div>
-
-            <div class="category-fix">
-                <div class="category-div">
-                    <h2 class="sm-heading">Category</h2>
-                </div>
-            <div class="post-container flex-column">
-                <div class="post-img">
-                    <img src="{% static 'home/img/your-blog-header.jpg' %}" alt="Blog Post {{post.serial_no}}">
-                </div>
-
-                <div class="post-content">
-                    <div class="author-div flex">
-                        <div class="author-img flex-center">
-                            <img src="{% static 'home/img/your-blog-header.jpg' %}" alt="{{post.author}}'s Image">
-                        </div>
-
-                        <div class="author-details">
-                            <p>Admin</p>
-                            <p class="font-300">Apr 15 - 346 Views</p>
-                        </div>
-                    </div>
-
-                    <div class="post-texts">
-                        <h2 class="sm-heading">Here Comes the Post Title</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias quas
-                            recusandae, ex provident quidem cupiditate reprehenderit maiores adipisci culpa dolor!</p>
-                    </div>
-                    <br>
-                    <hr>
-                </div>
-                </div>
-            </div>
         </div>
 
         <div class="button-container flex-center l-spacing-md">
-                    <button type="button" class="btn btn-primary">All Posts</button>
+                    <button type="button" class="btn">All Posts</button>
                 </div>
     </section>
     <hr>

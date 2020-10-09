@@ -1,0 +1,5 @@
+// doBoxBlink = setInterval(blink, 1500);
+
+      // function blink() {
+      //     document.getElementById("log-con").toggleAttribute("hidden")
+      // }
