@@ -20,7 +20,7 @@
     />
   </head>
 
-  <body>
+  <body scroll=no style="overflow-x: hidden;">
     <div class="container">
       <header class="header">
         <nav class="navbar">
@@ -69,8 +69,16 @@
         </div>
 
         <div class="login-signup-btn" style="position: relative; left: 295px; bottom: 30px;">
-          <button type="button" class="btn-primary">Login</button>
+          <button type="button" class="btn-primary" id="login">Login</button>
           <button type="button" class="btn-primary">Sign Up</button>
+        </div>
+
+        <div class="modal-div" id="modal">
+          
+          <div class="modal-content">
+            <p>Text</p>
+          </div>
+
         </div>
 
       </header>
@@ -152,7 +160,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script>
-      
+      document.getElementById("login").addEventListener("click", ()=>{
+        document.getElementById("modal").style.display = "block";
+      })
     </script>
   </body>
 </html>
