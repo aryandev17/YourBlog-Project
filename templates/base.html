@@ -57,6 +57,7 @@
       <div class="welcome-user text-center">
         <h3>Welcome {{ request.user }} !!</h3>
         <a href="/logout/"><button type="submit" class="btn-primary" id="logout">Logout</button></a>
+        <a href="/admin/"><button type="submit" class="btn-primary">Dashboard</button></a>
       </div>
 
       {% else %}
@@ -214,6 +215,8 @@
       document.getElementById("message-modal").style.display = "none"
     }, 2000);
   </script>
+
+  {% block js %} {% endblock js %}
 </body>
 
 </html>

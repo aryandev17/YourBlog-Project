@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+
+{% block title %} {{post.title|slice:":-1"}} - YourBlog {% endblock title %}
+
+{% block body %}
+
+<div class="container">
+    <div class="blog-post-content-div">
+
+        <div class="post-title-tagline-div">
+            <h1 class="lg-heading">{{post.title}}</h1>
+            <h3 class="sm-heading">{{post.tagline}}</h3>
+        </div>
+
+        <div class="post-header-image">
+            <img src="/media/{{post.thumbnail_image}}" alt="{{post.title}} Header image">
+        </div>
+
+        <div class="post-content-by-tinymce">
+            <h2 class="md-heading">This is the content</h2>
+        </div>
+
+        <div class="post-hr"></div>
+
+        <div class="below-post-hr flex">
+
+            <div class="social-icons">
+                <i class="fab fa-facebook-f fa-2x icon"></i>
+                <i class="fab fa-twitter fa-2x icon"></i>
+                <i class="fab fa-instagram fa-2x icon"></i>
+            </div>
+
+            <div class="category-h3 sm-heading">Category : <span
+                    style="color: grey; font-size: 18px;">{{post.category|title}}</span></div>
+        </div>
+
+        <div class="post-hr" style="margin-top: 10px; margin-bottom: 30px;"></div>
+
+        {% if user.is_authenticated %}
+        <div class="comment-section" style="margin-top: 25px;">
+            <div class="comment-box flex-column-no-center">
+                <form action="/blog/postComment" method="POST">{% csrf_token %}
+                    <h2 class="md-heading text-left">Leave a comment :</h2>
+                    <textarea class="comment-textarea" name="comment-textarea" id="" cols="30" rows="10"></textarea>
+                    <input type="hidden" name="postSerial" value="{{post.serial_no}}">
+                    <input type="hidden" name="parentSerial" value="">
+                    <button type="submit" class="btn-primary comment-submit" id="">Submit</button>
+                </form>
+            </div>
+        </div>
+
+        {% else %}
+
+        <h2 class="md-heading">You have to be logged in to Post Comments !!</h2>
+
+        {% endif %}
+
+        <div class="post-hr" style="margin-bottom: 20px;"></div>
+
+        <div class="md-heading" style="margin-bottom: 30px;">Comments (0)</div>
+
+
+    </div>
+
+    {% for comment in comments %}
+    <div class="comment-reply-div flex">
+        <div class="comment-user-img">
+            <img src="/media/{{post.thumbnail_image}}" alt="" style="width: 50px; height: 50px; border-radius: 100%;">
+        </div>
+
+        <div class="comment-show flex-column-no-center" style="margin-left: 25px; width: 100%;">
+            <h2 class="sm-heading">{{comment.user.username}}</h2>
+            <p class="comment-timestamp">{{comment.timestamp}}</p>
+            <p class="comment-text">{{comment.comment}}</p>
+
+            {% if user.is_authenticated %}
+            <button type="button" class="btn-primary reply-submit" id="reply-btn">Reply</button>
+            {% endif %}
+
+            <div class="comment-section" id="reply-box" style="margin-top: 25px; display: none; border: 1px solid lightgray; padding: 10px;">
+                <div class="reply border comment-box flex-column-no-center">
+                    <form action="/blog/postComment" method="POST">{% csrf_token %}
+                        <h2 class="md-heading text-left">Reply</h2>
+                        <textarea class="comment-textarea" name="comment-textarea" id="" cols="30" rows="10"></textarea>
+                        <input type="hidden" name="postSerial" value="{{post.serial_no}}">
+                        <input type="hidden" name="parentSerial" value="{{comment.serial_no}}">
+                        <button type="submit" class="reply-submit btn-primary comment-submit" id="">Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reply Show -->
+
+    <div class="reply-div" style="margin-left: 45px;">
+        <div class="comment-reply-div flex">
+            <div class="comment-user-img">
+                <img src="/media/{{post.thumbnail_image}}" alt=""
+                    style="width: 50px; height: 50px; border-radius: 100%;">
+            </div>
+
+            <div class="comment-show flex-column-no-center" style="margin-left: 25px;">
+                <h2 class="sm-heading">Aryan Gupta</h2>
+                <p class="comment-timestamp">Lorem ipsum dolor sit amet consectetur.</p>
+                <p class="comment-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi voluptas nulla
+                    necessitatibus repellendus, illo nesciunt.</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+{% block js %}
+
+<script>
+    let acc = document.getElementsByClassName("reply-submit");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    /* Toggle between adding and removing the "active" class,
+    to highlight the button that controls the panel */
+
+    /* Toggle between hiding and showing the active panel */
+    var panel = this.nextElementSibling;
+    console.log(panel.style.display);
+    if (panel.style.display === "none") {
+        panel.style.display = "block";
+    }
+    else{
+        panel.style.display = "none";
+    }
+  });
+}
+</script>
+
+{% endblock js %}
+
+{% endblock body %}

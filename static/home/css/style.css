@@ -49,6 +49,10 @@ a{
     justify-content: center;
 }
 
+.flex-space-between{
+    justify-content: space-between;
+}
+
 .flex-column{
     display: flex;
     flex-direction: column;
@@ -60,8 +64,6 @@ a{
     display: flex;
     flex-direction: column;
 }
-
-
 
 .flex-wrap-nocenter{
     display:flex;
@@ -205,6 +207,10 @@ center{
     width: 345px;
     height: 450px;
     margin: 0 10px 40px 10px;
+}
+
+.post-container:hover .post-content h2{
+    color: goldenrod;
 }
 
 .post-img{
@@ -589,6 +595,92 @@ footer{
 .welcome-user button{
     padding: 7px 30px;
     background-color: rgb(240, 236, 236);
-    margin-top: 10px;
+    margin: 10px 0 0 0;
     border-radius: 20px;
 }
+
+/* ################ STYLING POST PAGE ################ */
+
+.post-title-tagline-div{
+    margin-top: 15px;
+}
+
+.blog-post-content-div h1{
+    font-size: 40px;
+}
+
+.blog-post-content-div h3{
+    font-size: 18px;
+    margin-top: 25px;
+}
+
+.post-header-image img{
+    width: 100%;
+    margin-top: 25px;
+}
+
+.post-content-by-tinymce{
+    margin-top: 25px;
+}
+
+.below-post-hr{
+    justify-content: space-between;
+}
+
+.post-hr{
+    border-bottom: 1px solid lightgray;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.comment-reply-div{
+    margin-bottom: 40px;
+}
+
+.comment-timestamp{
+    text-transform: uppercase; 
+    margin: 10px 0; 
+    color: grey; 
+    font-size: 14px;
+}
+
+.comment-text{
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+/* ################ STYLING COMMENT SECTION ################ */
+
+
+.comment-textarea{
+    width: 100%;
+    outline: none;
+    /* border: none;
+    border-bottom: 1px solid black; */
+    margin-top: 20px;
+    height: 70px;
+    max-height: 70px;
+    max-width: 100%;
+    padding: 10px;
+
+}
+
+.comment-submit{
+    padding: 7px 30px;
+    background-color: rgb(240, 236, 236);
+    margin: 25px 0 0 0;
+    border-radius: 20px;
+}
+
+.reply-submit{
+    padding: 5px 15px;
+    background-color: rgb(240, 236, 236);
+    border: 1px solid rgba(0, 0, 0, 0.493);
+    margin: 15px 0 0 0;
+    border-radius: 15px;
+    outline: none;
+    font-size: 14px;
+    width: min-content;
+}
+
+

@@ -29,7 +29,7 @@
     {% if forloop.counter|divisibleby:2 %}
     <div class="blog-post-div flex-center" style="margin-top: 25px">
       <div class="blog-img-div" style="order: 2;">
-        <a href="/blog/slug"
+        <a href="/blog/{{post.category}}/{{post.slug}}"
           ><img src="/media/{{post.thumbnail_image}}" alt="Blog Post Image"
         /></a>
       </div>
@@ -50,7 +50,7 @@
         </div>
 
         <div class="blog-content">
-          <a href="/blog/{{post.slug}}" style="color: black"
+          <a href="/blog/{{post.category}}/{{post.slug}}" style="color: black"
             ><h2 class="md-heading">{{post.title}}</h2></a
           >
           <p>{{post.content}}</p>
@@ -69,7 +69,7 @@
 
     <div class="blog-post-div flex-center" style="margin-top: 25px;">
       <div class="blog-img-div">
-        <a href="/blog/slug"
+        <a href="/blog/{{post.category}}/{{post.slug}}"
           ><img src="/media/{{post.thumbnail_image}}" alt="Blog Post Image"
         /></a>
       </div>
@@ -90,7 +90,7 @@
         </div>
 
         <div class="blog-content">
-          <a href="/blog/{{post.slug}}" style="color: black"
+          <a href="/blog/{{post.category}}/{{post.slug}}" style="color: black"
             ><h2 class="md-heading">{{post.title}}</h2></a
           >
           <p>{{post.content}}</p>

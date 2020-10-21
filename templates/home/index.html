@@ -22,7 +22,9 @@
                 </div>
             <div class="post-container flex-column">
                 <div class="post-img">
+                    <a href="/blog/{{post.category}}/{{post.slug}}">
                     <img src="/media/{{post.thumbnail_image}}" alt="Blog Post {{post.serial_no}}">
+                </a>
                 </div>
 
                 <div class="post-content">
@@ -38,8 +40,10 @@
                     </div>
 
                     <div class="post-texts">
+                        <a href="/blog/{{post.category}}/{{post.slug}}" style="color: black;">
                         <h2 class="sm-heading">{{post.title}}</h2>
                         <p style="min-height: 57px;">{{post.content}}</p>
+                    </a>
                     </div>
                     <br>
                     <hr>
