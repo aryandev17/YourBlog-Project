@@ -20,34 +20,34 @@
                 <div class="category-div">
                     <h2 class="sm-heading">{{post.category|title}}</h2>
                 </div>
-            <div class="post-container flex-column">
-                <div class="post-img">
-                    <a href="/blog/{{post.category}}/{{post.slug}}">
-                    <img src="/media/{{post.thumbnail_image}}" alt="Blog Post {{post.serial_no}}">
-                </a>
-                </div>
-
-                <div class="post-content">
-                    <div class="author-div flex">
-                        <div class="author-img flex-center">
-                            <img src="{% static 'home/img/your-blog-header.jpg' %}" alt="{{post.author}}'s Image">
-                        </div>
-
-                        <div class="author-details">
-                            <p>{{post.author}}</p>
-                            <p class="font-300">Apr 15 - 346 Views</p>
-                        </div>
+                <div class="post-container flex-column">
+                    <div class="post-img">
+                        <a href="/blog/{{post.category}}/{{post.slug}}">
+                            <img src="/media/{{post.thumbnail_image}}" alt="Blog Post {{post.serial_no}}">
+                        </a>
                     </div>
 
-                    <div class="post-texts">
-                        <a href="/blog/{{post.category}}/{{post.slug}}" style="color: black;">
-                        <h2 class="sm-heading">{{post.title}}</h2>
-                        <p style="min-height: 57px;">{{post.content}}</p>
-                    </a>
+                    <div class="post-content">
+                        <div class="author-div flex">
+                            <div class="author-img flex-center">
+                                <img src="{% static 'home/img/your-blog-header.jpg' %}" alt="{{post.author}}'s Image">
+                            </div>
+
+                            <div class="author-details">
+                                <p>{{post.author}}</p>
+                                <p class="font-300">Apr 15 - 346 Views</p>
+                            </div>
+                        </div>
+
+                        <div class="post-texts">
+                            <a href="/blog/{{post.category}}/{{post.slug}}" style="color: black;">
+                                <h2 class="sm-heading">{{post.title}}</h2>
+                                <div class="preview" style="min-height: 57px; font-size: 16px; max-height: 57px;">{{post.content|truncatechars:110}}</div>
+                            </a>
+                        </div>
+                        <br>
+                        <hr>
                     </div>
-                    <br>
-                    <hr>
-                </div>
                 </div>
             </div>
             {% endfor %}
@@ -55,9 +55,16 @@
         </div>
 
         <div class="button-container flex-center l-spacing-md">
-                    <button type="button" class="btn">All Posts</button>
-                </div>
+            <a href="/blog#all_post"><button type="button" class="btn">All Posts</button></a>
+        </div>
     </section>
     <hr>
 </div> <!-- End of class container -->
+
+<script>
+    preview_content = document.getElementsByClassName("preview")
+    Array.from(preview_content).forEach(function (element) {
+        element.innerHTML = element.innerText
+    })
+</script>
 {% endblock body %}

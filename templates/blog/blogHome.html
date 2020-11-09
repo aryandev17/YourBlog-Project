@@ -8,7 +8,7 @@
 
 {% block body %}
 <div class="container nth-child">
-  <div class="blog-container">
+  <div class="blog-container" id="all_post">
     <div class="all-posts-heading flex-center lg-heading">All Posts</div>
 
     <div class="category-navbar">
@@ -53,13 +53,13 @@
           <a href="/blog/{{post.category}}/{{post.slug}}" style="color: black"
             ><h2 class="md-heading">{{post.title}}</h2></a
           >
-          <p>{{post.content}}</p>
+          <p>{{post.content|safe|truncatechars:200}}</p>
 
           <div class="hr-bottom"></div>
 
           <div class="views-comment flex">
             <p>4356 Views</p>
-            <p><a href="/blog">Write a comment</a></p>
+            <p><a href="/blog/{{post.category}}/{{post.slug}}#comment-b">Write a comment</a></p>
           </div>
         </div>
       </div>
@@ -93,13 +93,13 @@
           <a href="/blog/{{post.category}}/{{post.slug}}" style="color: black"
             ><h2 class="md-heading">{{post.title}}</h2></a
           >
-          <p>{{post.content}}</p>
+          <div class = "preview" style="min-height:90px; font-size: 17px;">{{post.content|safe|truncatechars:200}}</div>
 
           <div class="hr-bottom"></div>
 
           <div class="views-comment flex">
             <p>4356 Views</p>
-            <p><a href="/blog">Write a comment</a></p>
+            <p><a href="/blog/{{post.category}}/{{post.slug}}#comment-b">Write a comment</a></p>
           </div>
         </div>
       </div>
@@ -109,4 +109,11 @@
     {% endfor %}
   </div>
 </div>
+
+<script>
+  preview_content = document.getElementsByClassName("preview")
+  Array.from(preview_content).forEach(function(element){
+    element.innerHTML = element.innerText
+  })
+</script>
 {% endblock body %}

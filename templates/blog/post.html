@@ -4,6 +4,8 @@
 
 {% block body %}
 
+{% load extras %}
+
 <div class="container">
     <div class="blog-post-content-div">
 
@@ -13,11 +15,11 @@
         </div>
 
         <div class="post-header-image">
-            <img src="/media/{{post.thumbnail_image}}" alt="{{post.title}} Header image">
+            <img src="{{post.thumbnail_image}}" alt="{{post.title}} Header image">
         </div>
 
         <div class="post-content-by-tinymce">
-            <h2 class="md-heading">This is the content</h2>
+            {{post.content|safe}}
         </div>
 
         <div class="post-hr"></div>
@@ -37,7 +39,7 @@
         <div class="post-hr" style="margin-top: 10px; margin-bottom: 30px;"></div>
 
         {% if user.is_authenticated %}
-        <div class="comment-section" style="margin-top: 25px;">
+        <div class="comment-section" id="comment-b" style="margin-top: 25px;">
             <div class="comment-box flex-column-no-center">
                 <form action="/blog/postComment" method="POST">{% csrf_token %}
                     <h2 class="md-heading text-left">Leave a comment :</h2>
@@ -93,21 +95,24 @@
 
     <!-- Reply Show -->
 
-    <div class="reply-div" style="margin-left: 45px;">
+    {% for reply in replyDict|get_val:comment.serial_no %}
+    <div class="reply-div" id="reply-b{{comment.serial_no}}" style="margin-left: 45px;">
         <div class="comment-reply-div flex">
             <div class="comment-user-img">
-                <img src="/media/{{post.thumbnail_image}}" alt=""
+                <img src="{{post.thumbnail_image}}" alt=""
                     style="width: 50px; height: 50px; border-radius: 100%;">
             </div>
 
             <div class="comment-show flex-column-no-center" style="margin-left: 25px;">
-                <h2 class="sm-heading">Aryan Gupta</h2>
-                <p class="comment-timestamp">Lorem ipsum dolor sit amet consectetur.</p>
-                <p class="comment-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi voluptas nulla
-                    necessitatibus repellendus, illo nesciunt.</p>
+                <h2 class="sm-heading">{{reply.user.username}}</h2>
+                <p class="comment-timestamp">{{reply.timestamp}}</p>
+                <p class="comment-text">{{reply.comment}}</p>
             </div>
         </div>
     </div>
+
+    {% endfor %}
+
     {% endfor %}
 
 </div>

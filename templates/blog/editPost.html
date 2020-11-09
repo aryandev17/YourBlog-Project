@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %} Edit Post - {{post.title}}{% endblock title %}
+
+{% block body %}
+<div class="container">
+    <h1 class="lg-heading text-center">Edit Post</h1>
+    <form action="/editPost/{{serial_no}}" method="POST" enctype="multipart/form-data">{% csrf_token %}
+        <div class="editForm flex-column">
+        <input type="text" name="title" placeholder="Title" value="{{post.title}}">
+
+        <input type="text" name="tagline" placeholder="Tagline" value="{{post.tagline}}">
+
+        <input type="slug" name="slug" placeholder="Slug" value="{{post.slug}}">
+
+        <input type="text" class="category-input" name="category" placeholder="category" value="{{post.category}}">
+
+        {{ form.image}}
+
+        <label for="id_image">Choose a Post Thumbnail <span><i class="	fas fa-camera-retro"></i></span></label>
+
+        <textarea name="content" id="editTextarea" cols="30" rows="10" placeholder="Content">{{post.content}}</textarea>
+
+        <div class="submit-btn">
+        <button type="submit" class="btn"> Edit </button>
+    </div>
+    </div>
+    </form>
+</div>
+
+<script>
+    tinymce.init({
+        selector: '#editTextarea',
+        height: 500,
+        menubar: false,
+        plugins: [
+            'advlist autolink link image lists charmap print preview hr anchor pagebreak',
+            'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+            'table emoticons template paste help'
+          ],
+          toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | ' +
+            'bullist numlist outdent indent | link image | print preview media fullpage | ' +
+            'forecolor backcolor emoticons | help',
+          menu: {
+            favs: {title: 'My Favorites', items: 'code visualaid | searchreplace | emoticons'}
+          },
+          menubar: 'favs file edit view insert format tools table help',
+          content_css: 'css/content.css'
+        });
+</script>
+{% endblock body %}
+

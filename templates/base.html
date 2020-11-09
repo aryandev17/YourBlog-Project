@@ -8,6 +8,7 @@
   <title>{% block title %} {% endblock title %}</title>
   <link rel="stylesheet" href="{% static 'home/css/style.css' %}" />
   <link rel="shortcut icon" href="{% static 'home/img/your-blog-header1.jpg'%}">
+  <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
   <!-- Google Font -->
   <link
@@ -57,7 +58,7 @@
       <div class="welcome-user text-center">
         <h3>Welcome {{ request.user }} !!</h3>
         <a href="/logout/"><button type="submit" class="btn-primary" id="logout">Logout</button></a>
-        <a href="/admin/"><button type="submit" class="btn-primary">Dashboard</button></a>
+        <a href="/dashboard"><button type="submit" class="btn-primary">Dashboard</button></a>
       </div>
 
       {% else %}
@@ -116,7 +117,7 @@
 
           <h2 class="md-heading flex-column">Sign Up</h2>
 
-          <form action="/signup/" class="login-form" method="POST"> {% csrf_token %}
+          <form action="/signup/" class="login-form" method="POST" enctype="multipart/form-data"> {% csrf_token %}
 
             <div class="signup-inputs flex-column">
 
@@ -152,7 +153,7 @@
         </h1>
       </div>
       <div class="contact-input-fields flex-column">
-        <form action="{{request.path}}" method="POST">
+        <form action="/contact/" method="POST">
           {% csrf_token %}
           <div class="name-email-field flex">
             <input type="text" name="name" id="name" placeholder="Name" />
@@ -187,7 +188,7 @@
       <div class="quick-links text-left flex-center">
         <ul class="ql-items">
           <li class="ql-item"><a href="/">Home</a></li>
-          <li class="ql-item"><a href="/blog">Blog</a></li>
+          <li class="ql-item"><a href="/blog#all_post">Blog</a></li>
           <li class="ql-item"><a href="/about">About</a></li>
           <li class="ql-item"><a href="#contact">Contact Us</a></li>
         </ul>
@@ -201,8 +202,12 @@
 
   <script src="https://kit.fontawesome.com/84e89d6982.js" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+  
   <script>
+    setTimeout(() => {
+      document.getElementById("message-modal").style.display = "none"
+    }, 2000);
+
     document.getElementById("login").addEventListener("click", () => {
       document.getElementById("login-modal").style.display = "block";
     })
@@ -211,9 +216,6 @@
       document.getElementById("signup-modal").style.display = "block";
     })
 
-    setTimeout(() => {
-      document.getElementById("message-modal").style.display = "none"
-    }, 2000);
   </script>
 
   {% block js %} {% endblock js %}

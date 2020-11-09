@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %} Dashboard - YourBlog{% endblock title %}
+
+{% block body %}
+
+<div class="container">
+    <h1 class="lg-heading text-center">Dashboard</h1>
+
+    <div class="dashboard-div">
+        <div class="table-div">
+            <table style="width: 100%; margin-top: 30px;">
+                <tr>
+                    <th>S.no</th>
+                    <th>Posts</th>
+                    <th>Actions</th>
+                </tr>
+                {% for post in posts %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{post.title}}</td>
+                    <td><a href="/editPost/{{post.serial_no}}" ><button type="button" class="btn btn-dash">Edit</button></a> <a href="/deletePost/{{post.slug}}" ><button type="button"
+                            class="btn btn-dash">Delete</button></a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="add-post-btn text-center">
+            <a href="/editPost/0"><button type="button" class="btn">Add New Post</button></a>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

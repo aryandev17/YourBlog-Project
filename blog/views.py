@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect
 from .models import Post, BlogComment
 from django.contrib import messages
-
+from blog.templatetags import extras
 # Create your views here.
 
 def blogHome(request):
@@ -36,17 +36,21 @@ def postComment(request):
         user = request.user
         postSerial = request.POST.get("postSerial")
         parentSerial = request.POST.get("parentSerial")
+        print(parentSerial)
         post = Post.objects.get(serial_no = postSerial)
 
         if parentSerial == "":
             comment = BlogComment(comment= comment, user=user, post=post)
             comment.save()
             messages.success(request, "Your Comment has been Sent !!")
+            return redirect(f"/blog/{post.category}/{post.slug}#comment-b")
 
         else:
-            parentComment = BlogComment.objects.filter(serial_no= parentSerial)
+            parentComment = BlogComment.objects.get(serial_no= parentSerial)
             comment = BlogComment(comment= comment, user=user, post=post, parent=parentComment)
             comment.save()
             messages.success(request, "Your Reply has been Sent !!")
+            return redirect(f"/blog/{post.category}/{post.slug}#reply-b{parentSerial}")
 
     return redirect(f"/blog/{post.category}/{post.slug}")
+

@@ -11,9 +11,8 @@ class Post(models.Model):
     slug = models.SlugField(max_length=50, null=False)
     author = models.CharField(max_length=50, null=False)
     category = models.CharField(max_length=20, default="", null=False)
-    category_color_code_or_color_name = models.CharField(max_length = 7, default="Example - #0000FF or Blue")
     content = models.TextField()
-    thumbnail_image = models.ImageField(upload_to = "blog")
+    thumbnail_image = models.ImageField(upload_to = "blog", blank= True)
     timestamp = models.DateTimeField(default=now)
 
     def __str__(self):
@@ -26,7 +25,4 @@ class BlogComment(models.Model):
     post = models.ForeignKey(Post, on_delete= models.CASCADE)
     parent = models.ForeignKey("self", on_delete=models.CASCADE, null=True)
     timestamp = models.DateTimeField(default=now)
-    
-    def __str__(self):
-        return self.comment + " by " + str(self.user)
     
